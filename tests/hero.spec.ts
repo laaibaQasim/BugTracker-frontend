@@ -9,7 +9,7 @@ test.describe('Hero Component', () => {
     await page.waitForLoadState('networkidle');
     
     // Check if the main heading is visible
-    await expect(page.getByRole('heading', { name: /Log Coding errors and streamline debugging/i })).toBeVisible();
+    await expect(page.getByRole('heading', { name: /some wrong heading/i })).toBeVisible();
     
     // Check if the subheading is visible
     await expect(page.getByText('Easily track errors across all your projects.')).toBeVisible();
