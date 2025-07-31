@@ -10,7 +10,9 @@ export const Footer = () => {
         flexDirection: "column",
       }}
     >
-      <p sx={{ fontSize: "40px", fontWeight: "bolder" }}>Start Tracking Errors Now</p>
+      <p sx={{ fontSize: "40px", fontWeight: "bolder" }}>
+        Start Tracking Errors Now
+      </p>
       <div
         sx={{
           display: "flex",
@@ -62,6 +64,9 @@ export const Footer = () => {
           justifyContent: "center",
         }}
       >
+        <li>Home</li>
+        <li>About</li>
+        <li>Contact</li>
         <li>Home</li>
         <li>About</li>
         <li>Contact</li>
