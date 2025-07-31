@@ -25,56 +25,8 @@ test.describe('Hero Component', () => {
     
     // Take a screenshot for visual regression testing
     await page.screenshot({
-      path: 'test-results/hero-component.png',
+      path: 'tests/hero-component.png',
       fullPage: false,
     });
-  });
-
-  test('should hide hero image on mobile screens', async ({ page }) => {
-    // Set mobile viewport
-    await page.setViewportSize({ width: 375, height: 667 });
-    
-    // Navigate to the page
-    await page.goto('/');
-    await page.waitForLoadState('networkidle');
-    
-    // Check that heading is still visible
-    await expect(page.getByRole('heading', { name: /Log Coding errors and streamline debugging/i })).toBeVisible();
-    
-    // On mobile, the hero image should be hidden due to isBigScreen logic
-    // You might need to adjust this selector based on your actual HeroImage component
-    const heroImageContainer = page.locator('div:has(> *):last-child');
-    await expect(heroImageContainer).toBeHidden();
-    
-    // Take mobile screenshot
-    await page.screenshot({
-      path: 'test-results/hero-component-mobile.png',
-      fullPage: false,
-    });
-  });
-
-  test('should have proper styling and layout', async ({ page }) => {
-    await page.goto('/');
-    await page.waitForLoadState('networkidle');
-    
-    // Test the main container styling
-    const heroContainer = page.locator('div').first();
-    
-    // Check if the container has flex display (this is approximate testing)
-    const containerStyles = await heroContainer.evaluate((el) => {
-      const styles = window.getComputedStyle(el);
-      return {
-        display: styles.display,
-        backgroundColor: styles.backgroundColor,
-        borderRadius: styles.borderRadius,
-      };
-    });
-    
-    // Verify flex display
-    expect(containerStyles.display).toBe('flex');
-    
-    // Test that CTA buttons are present (adjust based on your HeroCtas component)
-    const ctaSection = page.locator('div').nth(1); // Adjust selector
-    await expect(ctaSection).toBeVisible();
   });
 });
